@@ -111,6 +111,7 @@
 	</command>
 
 	<command name="SearchExportTemplate" priority="4">
+		<property name="portal.acceptance" value="harry" />
 		<property name="osgi.module.configuration.file.names" value="com.liferay.portal.search.web.internal.configuration.SearchWebConfiguration.config" />
 		<property name="osgi.module.configurations" value="classicSearchPortletInFrontPage=&quot;true&quot;" />
 
