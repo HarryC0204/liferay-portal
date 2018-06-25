@@ -678,6 +678,10 @@
 	</command>
 
 	<command name="SearchPublishTemplate" priority="4">
+		<property name="portal.acceptance" value="harry" />
+		<property name="osgi.module.configuration.file.names" value="com.liferay.portal.search.web.internal.configuration.SearchWebConfiguration.config" />
+		<property name="osgi.module.configurations" value="classicSearchPortletInFrontPage=&quot;true&quot;" />
+
 		<execute macro="ProductMenu#gotoPortlet">
 			<var name="category" value="Publishing" />
 			<var name="panel" value="Site Administration" />
