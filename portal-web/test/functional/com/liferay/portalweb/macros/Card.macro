@@ -1,7 +1,7 @@
 definition {
 	macro clickSitePagesCardLink {
 		AssertClick(
-			locator1 = "Card#SITE_PAGES_CARD_LINK",
+			locator1 = "Card#SPECIFIC_CARD_TITLE",
 			value1 = "${cardName}",
 			key_cardName = "${cardName}"
 		);
