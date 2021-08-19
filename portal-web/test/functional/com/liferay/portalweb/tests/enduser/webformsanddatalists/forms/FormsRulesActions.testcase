@@ -1066,11 +1066,11 @@ definition {
 	@description = "LPS-102616 Configure data providers in both input and output fields in autofill rule"
 	@priority = "5"
 	test CanUtilizeDataProvidersInAutofillRule {
-		property portal.acceptance = "true";
+		property portal.acceptance = "Harry";
 		property portal.upstream = "true";
 		property test.name.skip.portal.instance = "FormsRulesActions#CanUtilizeDataProvidersInAutofillRule";
 
-/*		var portalURL = PropsUtil.get("portal.url");
+		var portalURL = PropsUtil.get("portal.url");
 
 		Navigator.openURL();
 
@@ -1092,7 +1092,7 @@ definition {
 			outputParameterType = "Text",
 			url = "http://zipcloud.ibsnet.co.jp/api/search?zipcode={zipcode}");
 
-		FormsAdmin.saveDataProvider();*/
+		FormsAdmin.saveDataProvider();
 
 		ProductMenu.gotoPortlet(
 			category = "Content &amp; Data",
