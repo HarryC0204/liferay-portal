@@ -38,6 +38,7 @@ definition {
 	@description = "Verify that a rule with an (Autofill) action can be previewed"
 	@priority = "5"
 	test AutofillRuleCanBePreviewed {
+        property portal.acceptance = "Harry"; 
 		property forms.functional = "true";
 		property test.name.skip.portal.instance = "FormsPreview#AutofillRuleCanBePreviewed";
 

@@ -395,6 +395,7 @@ definition {
 	@description = "Verify that a list can be created using Autofill"
 	@priority = "5"
 	test CanCreateListUsingAutofill {
+        property portal.acceptance = "Harry"; 
 		property forms.functional = "true";
 		property test.name.skip.portal.instance = "FormsSelectFromListField#CanCreateListUsingAutofill";
 
