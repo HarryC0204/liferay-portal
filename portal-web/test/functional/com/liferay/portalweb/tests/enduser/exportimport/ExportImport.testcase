@@ -270,6 +270,61 @@ definition {
 			value1 = "Unable to validate referenced document because it cannot be found with the following parameters");
 	}
 
+	@description = "This is a use case for LPS-97745."
+	@priority = "5"
+	test EditExportTemplateE {
+		JSONGroup.addGroup(groupName = "Test Site Export");
+
+		task ("Add a page template collection") {
+			JSONLayoutpagetemplate.addLayoutPageTemplateCollection(
+				groupName = "Test Site Export",
+				layoutPageTemplateCollectionName = "Page Template Collection");
+		}
+
+		task ("Add a widget page template") {
+			JSONLayoutpagetemplate.addLayoutPageTemplateEntry(
+				groupName = "Test Site Export",
+				layoutPageTemplateCollectionName = "Page Template Collection",
+				layoutPageTemplateEntryName = "Widget Page Template Name",
+				layoutPageTemplateStatus = "Approved",
+				layoutPageTemplateType = "Widget Page Template");
+		}
+
+		Site.openSiteSettingsAdmin(siteURLKey = "test-site-export");
+
+		LAR.exportSiteCP(siteScopeName = "Test Site Export");
+
+		var key_larFileName = "${larFileName}";
+
+		var larFileName = LAR.getLarFileName();
+
+		LAR.downloadLar();
+
+		JSONGroup.addGroup(groupName = "Test Site Import");
+
+		LAR.importSiteCP(
+			larFileName = "${larFileName}",
+			siteName = "Test Site Import");
+
+		Site.openSiteSettingsAdmin(siteURLKey = "test-site-import");
+
+		task ("delete the widget page template in Test Site Import") {
+			PageTemplatesAdmin.openPageTemplatesAdmin(siteURLKey = "test-site-import");
+
+			Navigator.gotoNavNested(navNested = "Page Template Collection");
+
+			PageTemplatesAdmin.deletePageTemplate(pageTemplateName = "Page Template Name");
+		}
+
+		task ("View the widget page template in Test Site Export") {
+			PageTemplatesAdmin.openPageTemplatesAdmin(siteURLKey = "test-site-import");
+
+			Navigator.gotoNavNested(navNested = "Page Template Collection");
+
+			PageTemplatesAdmin.viewPageTemplatePresent(pageTemplateName = "Page Template Name");
+		}
+	}
+
 	@priority = "4"
 	test EditExportTemplate {
 		property test.name.skip.portal.instance = "ExportImport#EditExportTemplate";
